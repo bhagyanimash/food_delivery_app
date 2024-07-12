@@ -7,9 +7,9 @@ class Resturent extends ChangeNotifier {
   final List<Food> _menu = [
     //burgers
     Food(
-      name: "Classic Cheeseburger",
+      name: "Cheeseburger",
       description:
-          "Cranberry sauce makes for a gorgeous salad dressing, tart and tangy to contrast with the bitterness of chicory. You can also use endives, frisee, or any other bitter greens that you like.",
+          "Cranberry sauce makes for a gorgeous salad dressing, tart and tangy to contrast with the bitterness of chicory.",
       imagePath: "lib/images/burgers/burger2.jpg",
       price: 0.99,
       category: FoodCategory.burgers,
@@ -22,7 +22,7 @@ class Resturent extends ChangeNotifier {
     Food(
       name: "Romantic Cheeseburger",
       description:
-          "Cranberry sauce makes for a gorgeous salad dressing, tart and tangy to contrast with the bitterness of chicory. You can also use endives, frisee, or any other bitter greens that you like.",
+          "Cranberry sauce makes for a gorgeous salad dressing, tart and tangy to contrast with the bitterness of chicory.",
       imagePath: "lib/images/burgers/burger1.jpg",
       price: 0.99,
       category: FoodCategory.burgers,
