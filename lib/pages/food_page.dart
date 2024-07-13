@@ -58,9 +58,10 @@ class _FoodPageState extends State<FoodPage> {
                       //food name
                       Text(
                         widget.food.name,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 20,
+                          color: Theme.of(context).colorScheme.inversePrimary,
                         ),
                       ),
 
@@ -78,6 +79,9 @@ class _FoodPageState extends State<FoodPage> {
                       //food description
                       Text(
                         widget.food.description,
+                        style: TextStyle(
+                            color:
+                                Theme.of(context).colorScheme.inversePrimary),
                       ),
 
                       const SizedBox(height: 10),
@@ -113,7 +117,13 @@ class _FoodPageState extends State<FoodPage> {
 
                             //return checkbox UI
                             return CheckboxListTile(
-                              title: Text(addon.name),
+                              title: Text(
+                                addon.name,
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .inversePrimary),
+                              ),
                               subtitle: Text(
                                 "\$${addon.price}",
                                 style: TextStyle(

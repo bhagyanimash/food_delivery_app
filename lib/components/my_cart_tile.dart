@@ -36,7 +36,13 @@ class MyCartTile extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(cartItem.food.name),
+                            Text(
+                              cartItem.food.name,
+                              style: TextStyle(
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .inversePrimary),
+                            ),
                             Text(
                               "\$" + cartItem.food.price.toString(),
                               style: TextStyle(
