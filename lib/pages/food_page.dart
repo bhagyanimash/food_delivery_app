@@ -162,7 +162,7 @@ class _FoodPageState extends State<FoodPage> {
             child: Container(
               margin: const EdgeInsets.only(left: 20),
               decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.primary,
                   shape: BoxShape.circle),
               child: IconButton(
                 icon: const Icon(Icons.arrow_back_ios_rounded),

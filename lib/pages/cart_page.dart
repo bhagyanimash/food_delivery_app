@@ -52,9 +52,15 @@ class CartPage extends StatelessWidget {
               child: Column(
                 children: [
                   userCart.isEmpty
-                      ? const Expanded(
+                      ? Expanded(
                           child: Center(
-                          child: Text("Cart is empty..."),
+                          child: Text(
+                            "Cart is empty...",
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .inversePrimary),
+                          ),
                         ))
                       : Expanded(
                           child: ListView.builder(

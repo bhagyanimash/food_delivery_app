@@ -9,13 +9,18 @@ class DeliveryProgressPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Delivery in progress...'),
+        title: Text(
+          'Delivery in progress...',
+          style: TextStyle(color: Theme.of(context).colorScheme.inversePrimary),
+        ),
       ),
       bottomNavigationBar: _buildBottomNavBar(context),
-      body: const Column(
-        children: [
-          MyReceipt(),
-        ],
+      body: const SingleChildScrollView(
+        child: Column(
+          children: [
+            MyReceipt(),
+          ],
+        ),
       ),
     );
   }
