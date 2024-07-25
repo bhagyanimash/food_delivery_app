@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/my_textfield.dart';
-import 'package:food_delivery_app/pages/home_page.dart';
+import 'package:food_delivery_app/services/auth/auth_services.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
@@ -16,16 +16,34 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
 
-  void login() {
-    /*
-      authentication method
-    */
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const HomePage(),
-      ),
-    );
+  // login method
+  void login() async {
+    final _authService = AuthService();
+
+    try {
+      await _authService.signInWithEmailPassword(
+        emailcontroller.text,
+        passwordcontroller.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+
+    // forgot password
+    void forgotPw() {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          backgroundColor: Theme.of(context).colorScheme.background,
+          title: const Text("User tapped forgot password"),
+        ),
+      );
+    }
   }
 
   @override
@@ -59,7 +77,10 @@ class _LoginPageState extends State<LoginPage> {
                 hintText: "Password",
                 obscureText: true),
             const SizedBox(height: 25),
-            MyButton(text: "Sign In", onTAp: login),
+            MyButton(
+              text: "Login",
+              onTAp: login,
+            ),
             const SizedBox(height: 25),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
