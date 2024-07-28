@@ -1,16 +1,18 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/models/resturent.dart';
+import 'package:provider/provider.dart';
 
 class MyCurrentLocation extends StatelessWidget {
   const MyCurrentLocation({super.key});
 
   void openLocationSearchBox(BuildContext context) {
+    TextEditingController textController = TextEditingController();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Your Location"),
         content: const TextField(
-          decoration: InputDecoration(hintText: "Search address.."),
+          decoration: InputDecoration(hintText: "Enter address.."),
         ),
         actions: [
           MaterialButton(
@@ -18,7 +20,11 @@ class MyCurrentLocation extends StatelessWidget {
             child: const Text("Cancle"),
           ),
           MaterialButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {
+              String newAddress = textController.text;
+              context.read<Resturent>().updateDeliveryAddress(newAddress);
+              Navigator.pop(context);
+            },
             child: const Text("Save"),
           ),
         ],
@@ -41,13 +47,15 @@ class MyCurrentLocation extends StatelessWidget {
             onTap: () => openLocationSearchBox(context),
             child: Row(
               children: [
-                Text(
-                  "No:5, Kandy, Sri Lanka",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.inversePrimary,
-                      fontWeight: FontWeight.bold),
+                Consumer<Resturent>(
+                  builder: (context, resturent, child) => Text(
+                    resturent.deliveryAddress,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.inversePrimary,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-                Icon(Icons.keyboard_arrow_down_rounded),
+                const Icon(Icons.keyboard_arrow_down_rounded),
               ],
             ),
           )

@@ -147,19 +147,21 @@ class Resturent extends ChangeNotifier {
     )
   ];
 
+  //user cart
+  final List<CartItem> _cart = [];
+
+  String _deliveryAddress = 'Batagalla, Sri Lanka';
   /*
   GETTERS
   */
 
   List<Food> get menu => _menu;
   List<CartItem> get cart => _cart;
+  String get deliveryAddress => _deliveryAddress;
 
   /*
   OPERATIONS
   */
-
-  //user cart
-  final List<CartItem> _cart = [];
 
   //add to cart
   void addToCart(Food food, List<Addon> selectedAddons) {
@@ -230,6 +232,10 @@ class Resturent extends ChangeNotifier {
     notifyListeners();
   }
 
+  void updateDeliveryAddress(String newAddress) {
+    _deliveryAddress = newAddress;
+    notifyListeners();
+  }
   /*
   HELPERS
   */
@@ -260,6 +266,8 @@ class Resturent extends ChangeNotifier {
     receipt.writeln();
     receipt.writeln("Total Items: ${getTotalItemCount()}");
     receipt.writeln("Total Price: ${_formatPrice(getTotalPrice())}");
+    receipt.writeln();
+    receipt.writeln('Delivering to: $deliveryAddress');
 
     return receipt.toString();
   }
