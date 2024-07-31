@@ -54,16 +54,16 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.lock_open_rounded,
-              size: 100,
-              color: Theme.of(context).colorScheme.inversePrimary,
+            Image.asset(
+              'lib/images/logo.png',
+              width: 120,
             ),
             const SizedBox(height: 25),
             Text(
-              'Food Delivery App',
+              'Nimo Food Delivery',
               style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
                   color: Theme.of(context).colorScheme.inversePrimary),
             ),
             const SizedBox(height: 25),
